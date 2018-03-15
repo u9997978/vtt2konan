@@ -1,0 +1,192 @@
+#!/bin/sh
+
+OS=`uname -s`
+ARCH=`uname -m`
+ARCHBIT=32
+
+if [ -e configure.arch ]; then
+	case `grep m64 configure.arch` in
+	'm64')
+		ARCHBIT=64
+		;;
+	'm32')
+		ARCHBIT=32
+		;;
+	'')
+		ARCHBIT=32
+		;;
+	esac
+else
+	ARCHBIT=32
+fi
+
+
+#touch * */*
+
+if [ "$1" = "debug" ] ; then
+DEBUG_FLAGS=-g
+echo	Generating Makefile in Debug Mode ...
+else
+echo	Generating Makefile in Release Mode ...
+DEBUG_FLAGS=
+fi
+
+case $OS in
+'SunOS')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	case $ARCHBIT in
+	'64')
+		case $ARCH in
+			'i86pc')
+				cat Makefile.gcc-solaris64-i386 >> Makefile
+				make clean
+				#touch * */*
+				;;
+			'sun4u'|'sun4v')
+				cat Makefile.gcc-solaris64-sun >> Makefile
+				make clean
+				#touch * */*
+				;;
+			esac
+			echo Configuration on $OS-$ARCH-64 completed successfully
+			;;
+	'32')
+		cat Makefile.gcc-solaris-sun >> Makefile
+		make clean
+		#touch * */*
+		echo Configuration on $OS-32 completed successfully
+		;;
+	esac
+		;;
+'OSF1')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	cat Makefile.cxx-tru64-alpha >> Makefile
+	make clean
+	#touch * */*
+	echo Configuration on $OS completed successfully
+	;;
+'Linux')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	case $ARCHBIT in
+	'64')
+	    case $ARCH in
+	    'x86_64')
+		    cat Makefile.gcc-linux64-intel >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+
+	    'ia64')
+		    cat Makefile.gcc-linux-ia64 >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+
+	    's390x')
+		    cat Makefile.gcc-linux64-s390x >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+	    esac
+	    ;;
+	'32')
+	    case $ARCH in
+	    'i686')
+		    cat Makefile.gcc-linux-intel >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+	    'x86_64')
+		    cat Makefile.gcc-linux32-x86_64 >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+	    'ppc64')
+		    cat Makefile.gcc-linux32-ppc64 >> Makefile
+		    make clean
+		    #touch * */*
+		    echo Configuration on $OS-$ARCHBIT $ARCH completed successfully
+		    ;;
+	    esac
+	    ;;
+	esac
+
+	;;
+'Darwin')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	cat Makefile.gcc-darwin-intel >> Makefile
+	make clean
+	touch * */*
+	echo Configuration on $OS completed successfully
+	;;
+'FreeBSD')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	cat Makefile.gcc-freebsd-intel >> Makefile
+	make clean
+	#touch * */*
+	echo Configuration on $OS completed successfully
+	;;
+'IRIX64')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	cat Makefile.mpc-irix-mips >> Makefile
+	make clean
+	#touch * */*
+	echo Configuration on $OS completed successfully
+	;;
+'HP-UX')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+
+	case $ARCH in
+	'ia64')
+
+		if [ -x `which aCC` ] ; then
+			cat Makefile.acc-hpux-ia64 >> Makefile
+			make clean
+			#touch * */*
+			echo Configuration on $OS \(aCC\) completed successfully
+		elif [ -x `which gcc` ]; then
+			cat Makefile.gcc-hpux-ia64 >> Makefile
+			make clean
+			#touch * */*
+			echo Configuration on $OS \(gcc\) completed successfully
+		else
+			echo Configuration failed \(compiler not found\)
+		fi
+
+		;;
+
+	'9000/800')
+		cat Makefile.acc-hpux-hppa >> Makefile
+		make clean
+		#touch * */*
+		echo Configuration on $OS \(aCC\) completed successfully
+		;;
+	esac
+	;;
+
+'AIX')
+	echo HOMEDIR	=	. > Makefile
+	echo DEBUG_FLAGS	=	$DEBUG_FLAGS>> Makefile
+	cat Makefile.xlc-aix64-ppc >> Makefile
+	make clean
+	#touch * */*
+	echo Configuration on $OS completed successfully
+	;;
+#
+#	echo Configuration failed (unknown OS $OS) 
+#	;;
+esac
+
+

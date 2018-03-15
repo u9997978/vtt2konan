@@ -1,0 +1,58 @@
+
+>>> Monica: Okay, everybody, this is Rachel, another Lincoln High survivor.
+=== sent: Monica: Okay, everybody, this is Rachel, another Lincoln High survivor.
+=== token list: 15
+    0: monica Monica Monica NN FEMALE,CHARACTER <0:0~0:0 0-6
+    1: : : : SY 0:1~0:1 6-1>
+    2: okay Okay Okay NN <1:0~1:0 8-4
+    3: , , , SY 1:1~1:1 12-1>
+    4: everybody everybody everybody NN <2:0~2:0 14-9
+    5: , , , SY 2:1~2:1 23-1>
+    6: this this this NN <3:0~3:0 25-4>
+    7: is is is NN <4:0~4:0 30-2>
+    8: rachel Rachel Rachel NN FEMALE,CHARACTER <5:0~5:0 33-6
+    9: , , , SY 5:1~5:1 39-1>
+   10: another another another NN <6:0~6:0 41-7>
+   11: lincoln Lincoln Lincoln NN <7:0~7:0 49-7>
+   12: high High High NN <8:0~8:0 57-4>
+   13: survivor survivor survivor NN <9:0~9:0 62-8
+   14: . . . SY 9:1~9:1 70-1>
+=== special match: 0
+=== general match: 1
+ 0,14 -1,0:highschool`0,1:Monica`11,1:Lincoln -1,0:highschool`8,1:Rachel`11,1:Lincoln -1,0:alumna`0,1:Monica`8,1:Rachel -1,0:friend`0,1:Monica`8,1:Rachel (9)
+	data/../data/sfx_gen.txt:2 UP_00002 9  *survivor:13 :FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
+=== final result: 4
+__PATTERN_: data/../data/sfx_gen.txt:2	:FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
+__RESULT__: highschool`monica`lincoln<sent>Monica: Okay, everybody, this is Rachel, another {{Lincoln}} High survivor.
+__PATTERN_: data/../data/sfx_gen.txt:2	:FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
+__RESULT__: highschool`rachel`lincoln<sent>Monica: Okay, everybody, this is Rachel, another {{Lincoln}} High survivor.
+__PATTERN_: data/../data/sfx_gen.txt:2	:FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
+__RESULT__: alumna`monica`rachel<sent>Monica: Okay, everybody, this is {{Rachel}}, another Lincoln High survivor.
+__PATTERN_: data/../data/sfx_gen.txt:2	:FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
+__RESULT__: friend`monica`rachel<sent>Monica: Okay, everybody, this is {{Rachel}}, another Lincoln High survivor.
+
+
+>>> Monica: And you remember my brother Ross?
+=== sent: Monica: And you remember my brother Ross?
+=== token list: 9
+    0: monica Monica Monica NN FEMALE,CHARACTER <0:0~0:0 0-6
+    1: : : : SY 0:1~0:1 6-1>
+    2: and And And NN <1:0~1:0 8-3>
+    3: you you you NN <2:0~2:0 12-3>
+    4: remember remember remember NN <3:0~3:0 16-8>
+    5: my my my NN <4:0~4:0 25-2>
+    6: brother brother brother NN <5:0~5:0 28-7>
+    7: ross Ross Ross NN MALE,CHARACTER <6:0~6:0 36-4
+    8: ? ? ? SY 6:1~6:1 40-1>
+=== special match: 0
+=== general match: 1
+ 0,8 -1,0:brother`0,1:Monica`7,1:Ross -1,0:syster`7,1:Ross`0,1:Monica -1,0:family`0,1:Monica`7,1:Ross (5)
+	data/../data/sfx_gen.txt:1 UP_00001 5  *brother:6 :FEMALE#S \: ~K my brother :MALE#O = brother`#S`#O syster`#O`#S family`#S`#O
+=== final result: 3
+__PATTERN_: data/../data/sfx_gen.txt:1	:FEMALE#S \: ~K my brother :MALE#O = brother`#S`#O syster`#O`#S family`#S`#O
+__RESULT__: brother`monica`ross<sent>Monica: And you remember my brother {{Ross}}?
+__PATTERN_: data/../data/sfx_gen.txt:1	:FEMALE#S \: ~K my brother :MALE#O = brother`#S`#O syster`#O`#S family`#S`#O
+__RESULT__: syster`ross`monica<sent>{{Monica}}: And you remember my brother Ross?
+__PATTERN_: data/../data/sfx_gen.txt:1	:FEMALE#S \: ~K my brother :MALE#O = brother`#S`#O syster`#O`#S family`#S`#O
+__RESULT__: family`monica`ross<sent>Monica: And you remember my brother {{Ross}}?
+

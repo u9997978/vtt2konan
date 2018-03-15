@@ -1,0 +1,18 @@
+
+.SUFFIXES: .cpp .c .o .$(DO_SUFFIX)
+
+all: $(SFX2_TEST)
+
+HOMEDIR         = .
+LIBDIR			= $(HOMEDIR)/lib
+SRCDIR			= $(HOMEDIR)/src
+
+INCLDIR			= -I$(LIBDIR) \
+				  -I$(SRCDIR) 
+
+CFLAGS			+= $(INCLDIR)
+
+SFX2_TEST_OBJS = \
+			$(SRCDIR)/sfx2-test.o \
+
+

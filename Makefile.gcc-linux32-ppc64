@@ -1,0 +1,25 @@
+#DEBUG_FLAGS +=	-g #-D__DEBUG -DKT_DEBUG
+
+CC			= 	g++
+LINK		= 	g++
+DO_SUFFIX	=	dll.o
+DO_CFLAGS	=	-fPIC
+CFLAGS		= 	-c   -fsigned-char -O5 -Wall -D__32BIT
+LD_PATH		= 	-L$(LIBOUTDIR) -L/usr/lib
+LFLAGS		= 	-O5 
+SO_FLAGS	=	-shared
+LIBS		=	-lpthread -lnsl -ldl
+CMD_RANLIB	=	ranlib
+
+CFLAGS		+= 	$(DEBUG_FLAGS) -c -O5 
+
+
+########################################################
+
+include	Makefile.ver
+include	Makefile.nam.unix
+include	Makefile.lst
+include	Makefile.target.unix
+include	Makefile.suffix.unix
+include	Makefile.etc.unix
+

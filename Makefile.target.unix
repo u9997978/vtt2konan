@@ -1,0 +1,6 @@
+LFLAGS	+= -L. -L$(LIBDIR)
+
+$(SFX2_TEST): $(SFX2_TEST_OBJS)
+	@$(CC) $(LFLAGS) -o $@ $(SFX2_TEST_OBJS) $(LIBS)
+	@echo " '$@' created."
+

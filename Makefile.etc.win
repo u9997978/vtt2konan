@@ -1,0 +1,25 @@
+
+PACKAGE_NAME	= "sfx"
+
+PACKAGE_SUFFIX  = `uname -s`-`uname -r|sed -e 's/-\(.\)*//g'`-`uname -m`-$(CC)$(CC_VERSION)-`date +"%Y-%m-%d"`
+SRCPAK_SUFFIX   = `date +"%Y.%m.%d"`
+
+bak:
+	@\rm -f $(PACKAGE_NAME).src-$(__PROGRAM_VERSION)-$(SRCPAK_SUFFIX).tar
+	@tar cf $(PACKAGE_NAME).src-$(__PROGRAM_VERSION)-$(SRCPAK_SUFFIX).tar \
+		Make* \
+		configure* \
+		src*/*.cpp \
+		src*/*.h \
+		kpat/Make* \
+		kpat/configure* \
+		kpat/src*/*.cpp \
+		kpat/src*/*.h \
+		kpat/dat \
+		lib/*pcre* 
+	@echo " " created $(PACKAGE_NAME).$(__PROGRAM_VERSION)-$(SRCPAK_SUFFIX).tar
+
+clean:
+	@echo "deleting object files and library files ..."
+	@rm -f */*.o
+	@rm -f */*/*.o

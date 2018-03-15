@@ -1,0 +1,9 @@
+
+.cpp.o:
+	@echo "	compiling '$<' ..."
+	@$(CC) -o ${<:.cpp=.o} $(CFLAGS) $(DO_CFLAGS) $<
+
+.c.o:
+	@echo "	compiling '$<' ..."
+	@$(CC) -o ${<:.c=.o} $(CFLAGS) $(DO_CFLAGS) $<
+

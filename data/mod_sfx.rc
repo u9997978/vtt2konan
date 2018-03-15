@@ -1,0 +1,3 @@
+user_dic_for_general_pattern = ../data/sfx_gen.txt
+user_dic_for_feature_def = ../data/sfx_def.txt
+user_dic_for_feature = ../data/sfx_fea.txt

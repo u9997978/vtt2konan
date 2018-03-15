@@ -1,0 +1,20 @@
+
+__PROGRAM_VERSION	= 2.0.0
+
+__COPYRIGHT_NOTICE  = "Copyright (c) 2018 Konan Technology, Inc."
+
+CFLAGS += -D__PROGRAM_VERSION=\"$(__PROGRAM_VERSION)\"
+CFLAGS += -D__COPYRIGHT_NOTICE=\"$(__COPYRIGHT_NOTICE)\"
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+
+

@@ -1,0 +1,2 @@
+UP_00001 :FEMALE#S \: ~K my brother :MALE#O = brother`#S`#O syster`#O`#S family`#S`#O
+UP_00002 :FEMALE#S \: ~K this is,are :FEMALE,MALE#O ~ another /NN#P high survivor = highschool`#S`#P highschool`#O`#P alumna`#S`#O friend`#S`#O
